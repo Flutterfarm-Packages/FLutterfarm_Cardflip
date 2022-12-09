@@ -4,9 +4,9 @@ import 'dart:math';
 class VerticallyFlippingCard extends StatefulWidget {
   final Widget frontCard;
   final Widget backCard;
-
+  final Duration duration;
   const VerticallyFlippingCard(
-      {Key? key, required this.frontCard, required this.backCard})
+      {Key? key, required this.frontCard, required this.backCard, required this.duration})
       : super(key: key);
 
   @override
@@ -30,7 +30,7 @@ class _VerticallyFlippingCardState extends State<VerticallyFlippingCard> {
       onTap: _flip,
       child: TweenAnimationBuilder(
           tween: Tween<double>(begin: 0, end: angle),
-          duration: Duration(seconds: 1),
+          duration:widget.duration,
           builder: (BuildContext context, double val, __) {
             //here we will change the isBack val so we can change the content of the card
             if (val >= (pi / 2)) {
